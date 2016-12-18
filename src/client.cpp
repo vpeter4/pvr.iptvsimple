@@ -262,10 +262,6 @@ ADDON_STATUS ADDON_SetSetting(const char *settingName, const void *settingValue)
   return ADDON_STATUS_NEED_RESTART;
 }
 
-void ADDON_Stop()
-{
-}
-
 void ADDON_FreeSettings()
 {
 }
