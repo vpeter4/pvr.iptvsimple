@@ -312,7 +312,7 @@ const char *GetBackendName(void)
 
 const char *GetBackendVersion(void)
 {
-  static std::string strBackendVersion = XBMC_PVR_API_VERSION;
+  static std::string strBackendVersion = INSTANCE_VERSION_PVR;
   return strBackendVersion.c_str();
 }
 
