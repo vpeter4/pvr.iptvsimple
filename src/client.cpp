@@ -312,7 +312,7 @@ const char *GetBackendName(void)
 
 const char *GetBackendVersion(void)
 {
-  static std::string strBackendVersion = INSTANCE_VERSION_PVR;
+  static std::string strBackendVersion = ADDON_INSTANCE_VERSION_PVR;
   return strBackendVersion.c_str();
 }
 
