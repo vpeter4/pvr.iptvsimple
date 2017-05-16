@@ -3,18 +3,18 @@ language: cpp
 #
 # Define the build matrix
 #
-# Travis defaults to building on Ubuntu Precise when building on 
-# Linux. We need Trusty in order to get up to date versions of 
+# Travis defaults to building on Ubuntu Precise when building on
+# Linux. We need Trusty in order to get up to date versions of
 # cmake and g++.
 #
 matrix:
   include:
     - os: linux
-      dist: trusty    
+      dist: trusty
       sudo: required
       compiler: gcc
     - os: linux
-      dist: trusty    
+      dist: trusty
       sudo: required
       compiler: clang
     - os: osx
@@ -23,7 +23,7 @@ matrix:
       osx_image: xcode6.1
 
 #
-# Some of the OS X images don't have cmake, contrary to what people 
+# Some of the OS X images don't have cmake, contrary to what people
 # on the Internet say
 #
 before_install:
