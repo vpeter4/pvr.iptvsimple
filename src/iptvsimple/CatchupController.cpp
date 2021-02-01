@@ -67,6 +67,11 @@ void CatchupController::ProcessChannelForPlayback(const Channel& channel, std::m
       {
         m_timeshiftBufferOffset = Settings::GetInstance().GetCatchupDaysInSeconds(); //offset from now to start of catchup window
         m_timeshiftBufferStartTime = std::time(nullptr) - Settings::GetInstance().GetCatchupDaysInSeconds(); // now - the window size
+
+        time_t timeResumeLast = channel.GetArchiveSeconds();
+        Logger::Log(LEVEL_INFO, "GetChannelStreamProperties timeResumeLast %s", ConvertTime(timeResumeLast));
+        if (timeResumeLast > 0)
+          m_timeshiftBufferStartTime = timeResumeLast - Settings::GetInstance().GetCatchupDaysInSeconds(); // little back
       }
       else
       {
@@ -252,6 +257,21 @@ void CatchupController::ClearProgramme()
   m_programmeTitle.clear();
   m_programmeUniqueChannelId = 0;
   m_programmeChannelTvgShift = 0;
+}
+
+char *CatchupController::ConvertTime(const time_t sec)
+{
+  struct tm *timeinfo;
+  static char buffer[128];
+
+  timeinfo = localtime(&sec);
+  bzero(buffer, sizeof(buffer));
+  snprintf(buffer, sizeof(buffer), "%ld  ", sec);
+  
+  if (sec > 0)
+    strftime(&buffer[strlen(buffer)], sizeof(buffer)-strlen(buffer), "%H:%M:%S %d.%m.%G", timeinfo);
+
+  return buffer;
 }
 
 namespace

@@ -52,6 +52,9 @@ namespace iptvsimple
     void UpdateProgrammeFrom(const data::EpgEntry& epgEntry, int tvgShift);
     void ClearProgramme();
 
+    // resume last
+    char *ConvertTime(const time_t sec);
+
     // State of current stream
     time_t m_catchupStartTime = 0;
     time_t m_catchupEndTime = 0;

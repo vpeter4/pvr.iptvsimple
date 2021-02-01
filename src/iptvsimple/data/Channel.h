@@ -122,6 +122,10 @@ namespace iptvsimple
       const std::string& GetInputStreamName() const { return m_inputStreamName; };
       void SetInputStreamName(const std::string& value) { m_inputStreamName = value; }
 
+      // resume lst
+      time_t GetArchiveSeconds() const { return m_archiveSeconds; }
+      void SetArchiveSeconds(time_t value) { m_archiveSeconds = value; }
+
       void UpdateTo(Channel& left) const;
       void UpdateTo(kodi::addon::PVRChannel& left) const;
       void Reset();
@@ -158,6 +162,7 @@ namespace iptvsimple
       std::string m_tvgName = "";
       std::map<std::string, std::string> m_properties;
       std::string m_inputStreamName;
+      time_t m_archiveSeconds = 0;
     };
   } //namespace data
 } //namespace iptvsimple

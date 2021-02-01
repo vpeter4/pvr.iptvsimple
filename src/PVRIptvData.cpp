@@ -176,6 +176,7 @@ PVR_ERROR PVRIptvData::GetChannelStreamProperties(const kodi::addon::PVRChannel&
 {
   if (GetChannel(channel, m_currentChannel))
   {
+    m_currentChannel.SetArchiveSeconds(channel.GetChannelArchiveSeconds());
     std::string streamURL = m_currentChannel.GetStreamURL();
 
     m_catchupController.ResetCatchupState(); // TODO: we need this currently until we have a way to know the stream stops.
